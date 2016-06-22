@@ -1,0 +1,70 @@
+<!--统计规则配置文件 -->
+<countRule>
+	<engine>
+		<!-- 规则引擎类全路径名（必须实现com.rampage.codestatistics.rule.intf.RuleEngine接口，并且有一个无参的构造函数） -->
+		<engineClass>com.rampage.codestatistics.rule.DefaultRuleEngine</engineClass>
+		<!-- 要统计的源码类型（对应SourceType的typeId字段,目前只支持单词统计一种类型源码） -->
+		<countSourceType>1</countSourceType>
+	</engine>
+	<!-- 配置源文件类型列表 -->
+	<sourceTypes>
+		<sourceType>
+			<typeId>1</typeId>
+			<typeName>c/c++</typeName>
+			<!-- 进行文件后缀名匹配的时候是否忽略大小写(默认为true) -->
+			<matchIgnoreCase>true</matchIgnoreCase>
+			<!-- 文件后缀名列表，以空格隔开 -->
+			<fileNameSuffix>.c,.cpp,.h,cxx,.cc</fileNameSuffix>
+			<!-- 单行注释的标识，如果有多个以逗号隔开 -->
+			<singleLineComment>//</singleLineComment>
+			<!-- 多行注释列表 -->
+			<multiLineComments>
+			     <multiLineComment>
+			         <!-- 多行注释开始标识 -->
+			         <start>/*</start>
+			         <!-- 多行注释结束标识 -->
+			         <end>*/</end>
+			     </multiLineComment>
+			</multiLineComments>
+		</sourceType>
+		<sourceType>
+            <typeId>2</typeId>
+            <typeName>xml</typeName>
+            <matchIgnoreCase>true</matchIgnoreCase>
+            <fileNameSuffix>.xml</fileNameSuffix>
+            <singleLineComment></singleLineComment>
+            <multiLineComments>
+                 <multiLineComment>
+                     <start>&lt;!--</start>
+                     <end>--&gt;</end>
+                 </multiLineComment>
+            </multiLineComments>
+        </sourceType>
+        <sourceType>
+            <typeId>3</typeId>
+            <typeName>properties</typeName>
+            <matchIgnoreCase>true</matchIgnoreCase>
+            <fileNameSuffix>.properties</fileNameSuffix>
+            <singleLineComment>#</singleLineComment>
+            <multiLineComments>
+            </multiLineComments>
+        </sourceType>
+        <sourceType>
+            <typeId>4</typeId>
+            <typeName>java</typeName>
+            <matchIgnoreCase>true</matchIgnoreCase>
+            <fileNameSuffix>.java</fileNameSuffix>
+            <singleLineComment>//</singleLineComment>
+            <multiLineComments>
+                 <multiLineComment>
+                     <start>/*</start>
+                     <end>*/</end>
+                 </multiLineComment>
+                 <multiLineComment>
+                     <start>/**</start>
+                     <end>*/</end>
+                 </multiLineComment>
+            </multiLineComments>
+        </sourceType>
+	</sourceTypes>
+</countRule>
